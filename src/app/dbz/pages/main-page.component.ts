@@ -7,14 +7,27 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainPageComponent {
-    public characters: Character[] = [{
-        name: 'Krillin',
-        power: 500
-    },{
-        name: 'Vegeta',
-        power: 50000
-    },{
-        name: 'Goku',
-        power: 50000
-    }];
+  //Principal
+  public characters: Character[] = [{
+      name: 'Krillin',
+      power: 5000
+  },{
+      name: 'Vegeta',
+      power: 50000
+  },{
+      name: 'Goku',
+      power: 50000
+  }];
+
+  onNewCharacter(character: Character):void{
+    console.log('MainPage: ');
+    console.log(character);
+
+    this.characters.push(character);
+  }
+
+  onDeleteIdMain(index:number):void{
+    console.log('MainPage:' + index);
+    this.characters.splice(index,1);
+  }
 }
