@@ -9,26 +9,29 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
 
   @Input()
-  public characterList: Character[]=[{
-      name: 'Trunks',
-      power: 500
-    },{
-        name: 'Vegeta',
-        power: 250000
-    },{
-        name: 'Goku',
-        power: 150000
-    }]
+  public characterList: Character[] = [{
+    id: '',
+    name: 'Trunks',
+    power: 500
+  }, {
+    id: '',
+    name: 'Vegeta',
+    power: 250000
+  }, {
+    id: '',
+    name: 'Goku',
+    power: 150000
+  }]
 
-    @Output()
-    public onDeleteId: EventEmitter<number> = new EventEmitter();
+  @Output()
+  public onDeleteById: EventEmitter<string> = new EventEmitter();
 
-    onDeleteCharacter(index:number):void{
-      //TODO: Emitir el ID del personaje
-      console.log({index});
-      this.onDeleteId.emit(index);
+  onDeleteCharacterById(id?: string): void {
+    if (!id) {
+      return;
     }
-
-
+    console.log('List:' + id);
+    this.onDeleteById.emit(id);
+  }
 
 }
